@@ -23,11 +23,11 @@ Datasets used:
 
 - [RDD Dataset](https://github.com/sekilab/RoadDamageDetector): This repository contains all the required datasets.
 
-- [RDD2022_India.zip](https://bigdatacup.s3.ap-northeast-1.amazonaws.com/2022/CRDDC2022/RDD2022/Country_Specific_Data_CRDDC2022/RDD2022_India.zip): Please click on this link to download the data or manually go to the [RDD](https://github.com/sekilab/RoadDamageDetector) repository and download `RDD2022_India.zip`
+- [RDD2022_India.zip](https://bigdatacup.s3.ap-northeast-1.amazonaws.com/2022/CRDDC2022/RDD2022/Country_Specific_Data_CRDDC2022/RDD2022_India.zip): Please click on this link to download the data or manually go to the [RDD](https://github.com/sekilab/RoadDamageDetector)  repository and download `RDD2022_India.zip`
 
-- [Japan/India/Czech Training Data](https://mycityreport.s3-ap-northeast-1.amazonaws.com/02_RoadDamageDataset/public_data/IEEE_bigdata_RDD2020/train.tar.gz): Please click on this link and download the dataset which contains `Japan/India/Czech` countries' training data or manually go to the [RDD](https://github.com/sekilab/RoadDamageDetector) and download `train.tar.gz` under `Dataset for GRDDC 2020`
+- [Japan/India/Czech Training Data](https://mycityreport.s3-ap-northeast-1.amazonaws.com/02_RoadDamageDataset/public_data/IEEE_bigdata_RDD2020/train.tar.gz): Please click on this link and download the dataset which contains `Japan/India/Czech` countries' training data or manually go to the [RDD](https://github.com/sekilab/RoadDamageDetector) repository and download `train.tar.gz` under `Dataset for GRDDC 2020`
 
-- [Japan/India/Czech Test Data](https://mycityreport.s3-ap-northeast-1.amazonaws.com/02_RoadDamageDataset/public_data/IEEE_bigdata_RDD2020/test1.tar.gz): Please click on this link and download the dataset which contains `Japan/India/Czech` countries' test data or manually go to the [RDD](https://github.com/sekilab/RoadDamageDetector) and download `test1.tar.gz` under `Dataset for GRDDC 2020`
+- [Japan/India/Czech Test Data](https://mycityreport.s3-ap-northeast-1.amazonaws.com/02_RoadDamageDataset/public_data/IEEE_bigdata_RDD2020/test1.tar.gz): Please click on this link and download the dataset which contains `Japan/India/Czech` countries' test data or manually go to the [RDD](https://github.com/sekilab/RoadDamageDetector) repository and download `test1.tar.gz` under `Dataset for GRDDC 2020`
 
 
 #### Key characteristics:
@@ -42,11 +42,11 @@ Datasets used:
 
 #### Why RDD:
 
-Well-established benchmark for road anomaly detection
+- Well-established benchmark for road anomaly detection
 
-Matches the target deployment scenario (dashcam → edge device)
+- Matches the target deployment scenario (dashcam → edge device)
 
-Suitable for YOLO-style object detection pipelines
+- Suitable for YOLO-style object detection pipelines
 
 ### 2. RDD2022ES (Kaggle)
 

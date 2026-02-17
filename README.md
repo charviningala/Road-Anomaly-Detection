@@ -429,8 +429,144 @@ Performance improved to **slightly above average**. Among the models, the **smal
    * `yolov8s_fine_tuned_quantized_tflite.ipynb`
      → Quantized INT8 TFLite model for efficient edge inference
 
-➡️ **Final Outcome:**
-A high-quality, fine-tuned YOLOv8s model with strong accuracy and an optimized **INT8 TFLite version** suitable for deployment on Raspberry Pi–class devices.
+---
+
+# 📊 Model Performance Comparison
+
+This section summarizes the performance of all major models trained during different phases of the project.
+
+Metrics reported:
+
+* **Precision**
+* **Recall**
+* **mAP@50**
+* **mAP@50-95**
+* **F1 Score**
+
+All values are taken directly from experiment logs.
+
+---
+
+## 1️⃣ Phase 1 — India-Only Training
+
+Trained only on **RDD2022_India** dataset.
+
+| Model   | Img Size | Epochs | Precision | Recall | mAP@50 | mAP@50-95 | F1 Score |
+| ------- | -------- | ------ | --------- | ------ | ------ | --------- | -------- |
+| YOLOv8n | 416      | 140    | 0.5549    | 0.4806 | 0.4760 | 0.1954    | 0.5151   |
+| YOLOv8s | 416      | 140    | 0.5463    | 0.4693 | 0.4756 | 0.1947    | 0.5049   |
+| YOLOv8m | 416      | 140    | 0.5464    | 0.4479 | 0.4624 | 0.1863    | 0.4923   |
+
+### 🔎 Observation
+
+* Performance was **limited due to small dataset size and class imbalance**
+* Scaling model size did **not significantly improve results**
+* Motivated multi-country training
+
+---
+
+## 2️⃣ Phase 2 — Three-Country Training (India + Japan + Czech)
+
+Trained on combined dataset for improved diversity.
+
+| Model    | Img Size | Epochs | Precision | Recall | mAP@50 | mAP@50-95 | F1 Score |
+| -------- | -------- | ------ | --------- | ------ | ------ | --------- | -------- |
+| YOLOv8n8 | 640      | 70     | 0.6456    | 0.5821 | 0.6265 | 0.3151    | 0.6122   |
+| YOLOv8s  | 640      | 70     | 0.6729    | 0.5970 | 0.6369 | 0.3218    | 0.6327   |
+| YOLOv8m  | 640      | 70     | 0.6619    | 0.5733 | 0.6235 | 0.3126    | 0.6144   |
+| YOLOv26s | 640      | 70     | 0.6453    | 0.5522 | 0.5997 | 0.2991    | 0.5952   |
+
+### 🔎 Observation
+
+* Significant improvement over India-only training
+* **YOLOv8s consistently performed best**
+* Increasing model size beyond small did not provide proportional gains
+* Multi-country diversity improved generalization
+
+---
+
+## 3️⃣ Phase 3 — Fine-Tuning on RDD2022ES (High-Quality Labels)
+
+Fine-tuned best-performing model on **RDD2022ES**.
+
+| Model                | Img Size | Epochs | Precision  | Recall     | mAP@50     | mAP@50-95  | F1 Score   |
+| -------------------- | -------- | ------ | ---------- | ---------- | ---------- | ---------- | ---------- |
+| YOLOv8n              | 640      | 70     | 0.6519     | 0.5943     | 0.6479     | 0.3594     | 0.6218     |
+| YOLOv8s              | 640      | 70     | **0.7453** | **0.6979** | **0.7620** | **0.4606** | **0.7208** |
+| YOLOv8n8 (256px)     | 256      | 70     | 0.4609     | 0.3527     | 0.3430     | 0.1575     | 0.3996     |
+| YOLOv8n INT8 (320px) | 320      | 70     | 0.4047     | 0.3183     | 0.2898     | 0.1214     | 0.3564     |
+| YOLOv8n INT8 (256px)(with nms) | 256      | 70     | 0.2440     | 0.1026     | 0.1700     | 0.0874     | 0.1445     |
+
+### 🔎 Observation
+
+* Fine-tuning on RDD2022ES drastically improved results
+* **YOLOv8s achieved the best overall performance**
+* Quantized INT8 models show reduced accuracy but are suitable for edge deployment
+* 256px models sacrifice accuracy for speed and efficiency
+
+---
+
+## Final Selected Model
+
+**YOLOv8s (fine-tuned on RDD2022ES)**
+
+* Best trade-off between:
+
+  * Accuracy
+  * Generalization
+  * Edge deployability
+* Exported to:
+
+  * TFLite
+  * INT8 quantized TFLite (for Raspberry Pi)
+
+---
+
+# 💻 Hardware Requirements (Edge Inference)
+
+## Deployment Device
+
+![Image](https://m.media-amazon.com/images/I/6120PfrjBqL._AC_UF1000%2C1000_QL80_.jpg)
+
+![Image](https://bizweb.dktcdn.net/100/005/602/products/pi4-topdown-1-2048x.png?v=1568019324960)
+
+![Image](https://thepihut.com/cdn/shop/articles/Rapberry_Pi_4_6d1ea10d-1cf8-47bc-92f6-29011855ec26.jpg?v=1576490106\&width=2048)
+
+![Image](https://rpi-magazines.s3-eu-west-1.amazonaws.com/magpi/legacy-assets/2019/06/raspberrypi4-hdmi-web.png)
+
+**Device Used for Inference:**
+
+* **Model:** Raspberry Pi 4 Model B
+* **RAM:** 2 GB
+* **Storage:** 64 GB microSD Card
+* **OS:** Raspberry Pi OS
+* **Camera**: Raspberry Pi Camera Module
+* **Inference Engine:** TensorFlow Lite (INT8 quantized model)
+
+---
+
+## Minimum Requirements
+
+| Component    | Requirement                             |
+| ------------ | --------------------------------------- |
+| CPU          | Quad-core ARM Cortex-A72                |
+| RAM          | 2 GB minimum                            |
+| Storage      | 32 GB+ microSD (64 GB recommended)      |
+| Power Supply | 5V 3A USB-C                             |
+| Camera       | Raspberry Pi Camera Module / USB Camera |
+
+---
+
+## Why Quantization Was Necessary
+
+* Raspberry Pi 4B (2GB) has limited RAM
+* Full FP32 YOLO models are too heavy
+* INT8 quantization:
+
+  * Reduces model size
+  * Improved inference speed
+  * Enabled real-time detection (-7~10 FPS)
+
 
 ---
 

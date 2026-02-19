@@ -492,23 +492,25 @@ Fine-tuned best-performing model on **RDD2022ES**.
 | Model                | Img Size | Epochs | Precision  | Recall     | mAP@50     | mAP@50-95  | F1 Score   |
 | -------------------- | -------- | ------ | ---------- | ---------- | ---------- | ---------- | ---------- |
 | YOLOv8n              | 640      | 70     | 0.6519     | 0.5943     | 0.6479     | 0.3594     | 0.6218     |
-| YOLOv8s              | 640      | 70     | **0.7453** | **0.6979** | **0.7620** | **0.4606** | **0.7208** |
+| YOLOv8s              | 640      | 70     | 0.7453 | 0.6979 | 0.7620 | 0.4606 | 0.7208 |
 | YOLOv8n8 (256px)     | 256      | 70     | 0.4609     | 0.3527     | 0.3430     | 0.1575     | 0.3996     |
 | YOLOv8n INT8 (320px) | 320      | 70     | 0.4047     | 0.3183     | 0.2898     | 0.1214     | 0.3564     |
 | YOLOv8n INT8 (256px)(with nms) | 256      | 70     | 0.2440     | 0.1026     | 0.1700     | 0.0874     | 0.1445     |
+| **YOLOv26s**             | **640**      |**70** | **0.82406** | **0.7132** | **0.8038** | **0.49165** | **0.7646** |
+| **YOLOv26s INT8 (640px) | 640 | 0.3723 | 0.2239 | 0.2795 | 0.1523 | 0.2796 |
 
 ### 🔎 Observation
 
 * Fine-tuning on RDD2022ES drastically improved results
-* **YOLOv8s achieved the best overall performance**
+* **YOLOv26s achieved the best overall performance**
 * Quantized INT8 models show reduced accuracy but are suitable for edge deployment
-* 256px models sacrifice accuracy for speed and efficiency
+* 640px models sacrifice accuracy for speed and efficiency
 
 ---
 
 ## Final Selected Model
 
-**YOLOv8s (fine-tuned on RDD2022ES)**
+**YOLOv26s (fine-tuned on RDD2022ES)**
 
 * Best trade-off between:
 

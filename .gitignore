@@ -55,5 +55,12 @@ src/fine_tuning/rd22/calibration_image_sample_data_20x128x128x3_float32.npy
 
 
 
+# Testing
 
+detect_nano_320_int8_run_on_boot.py
+detect_nano_320_int8.py
+detections.csv
+full_session_20260219_130441.avi
+
+yolov26n_quant/*
 

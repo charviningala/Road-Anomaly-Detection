@@ -11,7 +11,7 @@ import pytz
 # ================= CONFIG =================
 MODEL_PATH = "/home/pi/yolov26n_quant/best_full_integer_quant.tflite"
 INPUT_SIZE = 640
-CONF_THRESHOLD = 0.60
+CONF_THRESHOLD = 0.01
 FRAME_SKIP = 2
 CLIP_DURATION = 5
 SAVE_DIR = "/home/pi/detection_logs"

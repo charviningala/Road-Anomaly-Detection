@@ -64,3 +64,9 @@ full_session_20260219_130441.avi
 
 yolov26n_quant/*
 
+# detection logs
+
+detection_logs/*
+
+detections.csv
+
